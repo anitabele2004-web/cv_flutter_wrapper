@@ -1,103 +1,207 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV Profesional - Ana Delgado</title>
-  <!-- Tailwind CSS por CDN para diseño Mobile-First rápido y limpio -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+<body class="bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 antialiased min-h-screen flex flex-col justify-between">
 
-  <!-- Header / Presentación -->
-  <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white py-10 px-6 shadow-md text-center">
-    <div class="max-w-xl mx-auto">
-      <div class="w-24 h-24 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center text-3xl font-extrabold text-white shadow-inner border-2 border-white/40">
+  <!-- Botón Flotante: Modo Oscuro -->
+  <button id="theme-toggle" onclick="toggleTheme()" class="fixed top-4 right-4 z-50 p-2.5 bg-white/80 dark:bg-slate-800/80 backdrop-blur border border-slate-200 dark:border-slate-700 rounded-full shadow-lg text-lg hover:scale-110 active:scale-95 transition">
+    <span id="theme-icon">🌙</span>
+  </button>
+
+  <!-- Header Dinámico con Gradiente e Indicadores -->
+  <header class="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 text-white py-10 px-6 shadow-lg text-center relative overflow-hidden">
+    <div class="max-w-xl mx-auto relative z-10">
+      <div class="w-24 h-24 mx-auto mb-4 bg-white/20 dark:bg-white/10 rounded-full flex items-center justify-center text-3xl font-extrabold text-white shadow-inner border-2 border-white/40 ring-4 ring-white/10">
         AD
       </div>
       <h1 class="text-3xl font-bold tracking-tight">Ana Delgado</h1>
-      <p class="text-blue-100 font-medium text-lg mt-1">Ingeniería en Computación</p>
-      <div class="mt-4 flex justify-center gap-2">
-        <span class="bg-blue-600/60 text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold">UPEC</span>
-        <span class="bg-blue-600/60 text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold">7mo Semestre</span>
+      <p class="text-blue-100 font-medium text-base mt-1">Ingeniería en Computación</p>
+      
+      <div class="mt-4 flex flex-wrap justify-center gap-2">
+        <span class="bg-white/15 backdrop-blur text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold border border-white/20">UPEC</span>
+        <span class="bg-white/15 backdrop-blur text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold border border-white/20">7mo Semestre</span>
+        <span class="bg-emerald-400/20 text-emerald-200 border border-emerald-400/40 text-xs px-3 py-1 rounded-full font-semibold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Disponible para Proyectos
+        </span>
       </div>
     </div>
   </header>
 
   <!-- Contenedor Principal Mobile-First -->
-  <main class="max-w-xl mx-auto w-full px-5 py-8 space-y-6 flex-grow">
+  <main class="max-w-xl mx-auto w-full px-4 py-6 space-y-6 flex-grow">
 
     <!-- Sección: Perfil Profesional -->
-    <section class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
-      <h2 class="text-lg font-bold text-blue-700 flex items-center gap-2 mb-3">
-        <span>👤</span> Perfil Profesional
-      </h2>
-      <p class="text-slate-600 text-sm leading-relaxed">
-        Estudiante de Ingeniería en Computación con formación en desarrollo de software, visión artificial y diseño de bases de datos. Experiencia práctica en metodologías ágiles, control de versiones con Git y despliegue modular en contenedores Docker.
+    <section class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200/80 dark:border-slate-700/80 transition-all hover:shadow-md">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="p-2 bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 rounded-xl text-sm">👤</span>
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white">Perfil Profesional</h2>
+      </div>
+      <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+        Estudiante de Ingeniería en Computación con formación sólida en algoritmos de visión computacional, arquitecturas backend y bases de datos relacionales. Experiencia práctica en entornos contenerizados con Docker, flujos Git y metodologías ágiles.
       </p>
     </section>
 
-    <!-- Sección: Habilidades con Filtro Interactivo -->
-    <section class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
-      <h2 class="text-lg font-bold text-blue-700 flex items-center gap-2 mb-3">
-        <span>⚡</span> Habilidades Técnicas
-      </h2>
-      
-      <!-- Botones de Filtro (JS) -->
-      <div class="flex flex-wrap gap-2 mb-4 text-xs font-semibold">
+    <!-- Sección: Habilidades con Filtro y Barras de Nivel -->
+    <section class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200/80 dark:border-slate-700/80 transition-all hover:shadow-md">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <span class="p-2 bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 rounded-xl text-sm">⚡</span>
+          <h2 class="text-lg font-bold text-slate-900 dark:text-white">Habilidades Técnicas</h2>
+        </div>
+      </div>
+
+      <!-- Filtros dinámicos -->
+      <div class="flex flex-wrap gap-1.5 mb-5 text-xs font-medium">
         <button onclick="filterSkills('all')" class="filter-btn active-filter px-3 py-1.5 rounded-lg border">Todas</button>
         <button onclick="filterSkills('backend')" class="filter-btn px-3 py-1.5 rounded-lg border">Backend / Datos</button>
-        <button onclick="filterSkills('tools')" class="filter-btn px-3 py-1.5 rounded-lg border">Herramientas</button>
+        <button onclick="filterSkills('tools')" class="filter-btn px-3 py-1.5 rounded-lg border">Herramientas & DevOps</button>
       </div>
 
-      <div id="skills-list" class="flex flex-wrap gap-2">
-        <span class="skill-tag" data-cat="backend">Java</span>
-        <span class="skill-tag" data-cat="backend">Python</span>
-        <span class="skill-tag" data-cat="backend">PostgreSQL</span>
-        <span class="skill-tag" data-cat="backend">MySQL</span>
-        <span class="skill-tag" data-cat="tools">Docker</span>
-        <span class="skill-tag" data-cat="tools">Git / GitHub</span>
-        <span class="skill-tag" data-cat="tools">OpenCV</span>
-        <span class="skill-tag" data-cat="tools">Tailwind CSS</span>
-        <span class="skill-tag" data-cat="tools">Scrum / Jira</span>
+      <!-- Medidores interactivos de skills -->
+      <div id="skills-container" class="space-y-3.5">
+        <div class="skill-item" data-cat="backend">
+          <div class="flex justify-between text-xs font-semibold mb-1 text-slate-700 dark:text-slate-200">
+            <span>Python & OpenCV</span>
+            <span class="text-blue-600 dark:text-blue-400">90%</span>
+          </div>
+          <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+            <div class="bg-blue-600 h-2 rounded-full transition-all duration-700" style="width: 90%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item" data-cat="backend">
+          <div class="flex justify-between text-xs font-semibold mb-1 text-slate-700 dark:text-slate-200">
+            <span>Java & Arquitecturas EE</span>
+            <span class="text-blue-600 dark:text-blue-400">85%</span>
+          </div>
+          <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+            <div class="bg-blue-600 h-2 rounded-full transition-all duration-700" style="width: 85%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item" data-cat="backend">
+          <div class="flex justify-between text-xs font-semibold mb-1 text-slate-700 dark:text-slate-200">
+            <span>Bases de Datos (PostgreSQL / MySQL)</span>
+            <span class="text-blue-600 dark:text-blue-400">85%</span>
+          </div>
+          <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+            <div class="bg-blue-600 h-2 rounded-full transition-all duration-700" style="width: 85%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item" data-cat="tools">
+          <div class="flex justify-between text-xs font-semibold mb-1 text-slate-700 dark:text-slate-200">
+            <span>Docker & Contenedores Linux</span>
+            <span class="text-indigo-600 dark:text-indigo-400">80%</span>
+          </div>
+          <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+            <div class="bg-indigo-600 h-2 rounded-full transition-all duration-700" style="width: 80%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item" data-cat="tools">
+          <div class="flex justify-between text-xs font-semibold mb-1 text-slate-700 dark:text-slate-200">
+            <span>Git / GitHub & Scrum (Jira)</span>
+            <span class="text-indigo-600 dark:text-indigo-400">90%</span>
+          </div>
+          <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+            <div class="bg-indigo-600 h-2 rounded-full transition-all duration-700" style="width: 90%"></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Sección: Proyectos Destacados -->
-    <section class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
-      <h2 class="text-lg font-bold text-blue-700 flex items-center gap-2 mb-3">
-        <span>🚀</span> Proyectos Destacados
-      </h2>
-      <ul class="space-y-3 text-sm text-slate-600">
-        <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
-          <p class="font-semibold text-slate-800">Plataforma de Visión Artificial</p>
-          <p class="text-xs text-slate-500 mt-0.5">Transformada de Fourier, Hough, Canny y DCT con Python y OpenCV.</p>
-        </li>
-        <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
-          <p class="font-semibold text-slate-800">Gestor Gastronómico Web</p>
-          <p class="text-xs text-slate-500 mt-0.5">Backend en Django con interfaz Tailwind CSS bajo metodología Scrum.</p>
-        </li>
-        <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
-          <p class="font-semibold text-slate-800">Control de Inventario y Bodega</p>
-          <p class="text-xs text-slate-500 mt-0.5">Arquitectura Java EE desplegada sobre servidor de aplicaciones GlassFish.</p>
-        </li>
-      </ul>
+    <!-- Sección: Proyectos con Pestañas Interactivas (Tabs) -->
+    <section class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200/80 dark:border-slate-700/80 transition-all hover:shadow-md">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="p-2 bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 rounded-xl text-sm">🚀</span>
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white">Proyectos Destacados</h2>
+      </div>
+
+      <!-- Selector de pestañas -->
+      <div class="flex border-b border-slate-200 dark:border-slate-700 mb-4 text-xs font-semibold">
+        <button onclick="switchTab('vision')" id="tab-vision" class="tab-btn active-tab pb-2 px-3 border-b-2">Visión Artificial</button>
+        <button onclick="switchTab('web')" id="tab-web" class="tab-btn pb-2 px-3 border-b-2 text-slate-400 border-transparent">Web & Scrum</button>
+        <button onclick="switchTab('java')" id="tab-java" class="tab-btn pb-2 px-3 border-b-2 text-slate-400 border-transparent">Java EE</button>
+      </div>
+
+      <!-- Contenidos de pestaña -->
+      <div id="content-vision" class="tab-content">
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-700/50">
+          <h3 class="font-bold text-slate-800 dark:text-white text-sm">Plataforma OpticEngine Workbench</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Implementación de transformadas espectrales (Fourier, DCT), detección de bordes mediante Canny y detección de líneas con Hough utilizando Python y OpenCV.</p>
+          <div class="mt-3 flex gap-1.5 flex-wrap">
+            <span class="text-[11px] bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded-md font-medium">Python</span>
+            <span class="text-[11px] bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded-md font-medium">OpenCV</span>
+            <span class="text-[11px] bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded-md font-medium">NumPy</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="content-web" class="tab-content hidden">
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-700/50">
+          <h3 class="font-bold text-slate-800 dark:text-white text-sm">Gestor Gastronómico "El Rincón que No Conoces"</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Sistema web modular desarrollado en Django con componentes reactivos en Tailwind CSS, planificado bajo el marco ágil Scrum con Jira.</p>
+          <div class="mt-3 flex gap-1.5 flex-wrap">
+            <span class="text-[11px] bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-md font-medium">Django</span>
+            <span class="text-[11px] bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-md font-medium">Tailwind CSS</span>
+            <span class="text-[11px] bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-md font-medium">Jira Scrum</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="content-java" class="tab-content hidden">
+        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-700/50">
+          <h3 class="font-bold text-slate-800 dark:text-white text-sm">Sistema de Bodega e Inventario</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Plataforma empresarial de gestión de stock y almacén en Java EE con persistencia en MySQL y servidor GlassFish.</p>
+          <div class="mt-3 flex gap-1.5 flex-wrap">
+            <span class="text-[11px] bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded-md font-medium">Java EE</span>
+            <span class="text-[11px] bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded-md font-medium">GlassFish</span>
+            <span class="text-[11px] bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded-md font-medium">MySQL</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Sección: Contacto Directo -->
-    <section class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 text-center">
-      <h2 class="text-lg font-bold text-blue-700 mb-2">¿Interesado en mi perfil?</h2>
-      <p class="text-xs text-slate-500 mb-4">Haz clic para entablar comunicación directa por correo electrónico.</p>
-      <a href="mailto:contacto@ejemplo.com?subject=Oportunidad%20Profesional" 
+    <!-- Sección: Botones de Acción Rápida y Contacto -->
+    <section class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200/80 dark:border-slate-700/80 text-center">
+      <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Contacto Directo</h2>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Copia mi información o envíame un mensaje de inmediato.</p>
+      
+      <div class="grid grid-cols-2 gap-3 mb-3">
+        <button onclick="copyToClipboard('contacto.anadelgado@upec.edu.ec', '¡Correo copiado!')" class="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 text-xs font-semibold rounded-xl transition flex items-center justify-center gap-1.5">
+          📋 Copiar Correo
+        </button>
+        <button onclick="copyToClipboard('https://github.com/anadelgado', '¡Enlace copiado!')" class="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 text-xs font-semibold rounded-xl transition flex items-center justify-center gap-1.5">
+          🐙 GitHub
+        </button>
+      </div>
+
+      <a href="mailto:contacto.anadelgado@upec.edu.ec?subject=Contacto%20Profesional" 
          class="inline-block w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-md transition transform active:scale-95 text-sm">
-        ✉️ Enviar Mensaje de Contacto
+        ✉️ Enviar Correo Electrónico
       </a>
     </section>
 
   </main>
 
-  <footer class="py-4 text-center text-xs text-slate-400 border-t border-slate-200 bg-white">
+  <!-- Notificación Toast -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-xs font-semibold px-4 py-2.5 rounded-full shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+    ¡Copiado al portapapeles!
+  </div>
+
+  <footer class="py-4 text-center text-xs text-slate-400 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
     © 2026 - UPEC • Carrera de Computación
   </footer>
 
