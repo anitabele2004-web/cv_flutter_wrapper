@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Profesional - Ana Delgado</title>
+  <!-- Tailwind CSS por CDN para diseño Mobile-First rápido y limpio -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Presentación -->
+  <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white py-10 px-6 shadow-md text-center">
+    <div class="max-w-xl mx-auto">
+      <div class="w-24 h-24 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center text-3xl font-extrabold text-white shadow-inner border-2 border-white/40">
+        AD
+      </div>
+      <h1 class="text-3xl font-bold tracking-tight">Ana Delgado</h1>
+      <p class="text-blue-100 font-medium text-lg mt-1">Ingeniería en Computación</p>
+      <div class="mt-4 flex justify-center gap-2">
+        <span class="bg-blue-600/60 text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold">UPEC</span>
+        <span class="bg-blue-600/60 text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold">7mo Semestre</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal Mobile-First -->
+  <main class="max-w-xl mx-auto w-full px-5 py-8 space-y-6 flex-grow">
+
+    <!-- Sección: Perfil Profesional -->
+    <section class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
+      <h2 class="text-lg font-bold text-blue-700 flex items-center gap-2 mb-3">
+        <span>👤</span> Perfil Profesional
+      </h2>
+      <p class="text-slate-600 text-sm leading-relaxed">
+        Estudiante de Ingeniería en Computación con formación en desarrollo de software, visión artificial y diseño de bases de datos. Experiencia práctica en metodologías ágiles, control de versiones con Git y despliegue modular en contenedores Docker.
+      </p>
+    </section>
+
+    <!-- Sección: Habilidades con Filtro Interactivo -->
+    <section class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
+      <h2 class="text-lg font-bold text-blue-700 flex items-center gap-2 mb-3">
+        <span>⚡</span> Habilidades Técnicas
+      </h2>
+      
+      <!-- Botones de Filtro (JS) -->
+      <div class="flex flex-wrap gap-2 mb-4 text-xs font-semibold">
+        <button onclick="filterSkills('all')" class="filter-btn active-filter px-3 py-1.5 rounded-lg border">Todas</button>
+        <button onclick="filterSkills('backend')" class="filter-btn px-3 py-1.5 rounded-lg border">Backend / Datos</button>
+        <button onclick="filterSkills('tools')" class="filter-btn px-3 py-1.5 rounded-lg border">Herramientas</button>
+      </div>
+
+      <div id="skills-list" class="flex flex-wrap gap-2">
+        <span class="skill-tag" data-cat="backend">Java</span>
+        <span class="skill-tag" data-cat="backend">Python</span>
+        <span class="skill-tag" data-cat="backend">PostgreSQL</span>
+        <span class="skill-tag" data-cat="backend">MySQL</span>
+        <span class="skill-tag" data-cat="tools">Docker</span>
+        <span class="skill-tag" data-cat="tools">Git / GitHub</span>
+        <span class="skill-tag" data-cat="tools">OpenCV</span>
+        <span class="skill-tag" data-cat="tools">Tailwind CSS</span>
+        <span class="skill-tag" data-cat="tools">Scrum / Jira</span>
+      </div>
+    </section>
+
+    <!-- Sección: Proyectos Destacados -->
+    <section class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
+      <h2 class="text-lg font-bold text-blue-700 flex items-center gap-2 mb-3">
+        <span>🚀</span> Proyectos Destacados
+      </h2>
+      <ul class="space-y-3 text-sm text-slate-600">
+        <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+          <p class="font-semibold text-slate-800">Plataforma de Visión Artificial</p>
+          <p class="text-xs text-slate-500 mt-0.5">Transformada de Fourier, Hough, Canny y DCT con Python y OpenCV.</p>
+        </li>
+        <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+          <p class="font-semibold text-slate-800">Gestor Gastronómico Web</p>
+          <p class="text-xs text-slate-500 mt-0.5">Backend en Django con interfaz Tailwind CSS bajo metodología Scrum.</p>
+        </li>
+        <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+          <p class="font-semibold text-slate-800">Control de Inventario y Bodega</p>
+          <p class="text-xs text-slate-500 mt-0.5">Arquitectura Java EE desplegada sobre servidor de aplicaciones GlassFish.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Sección: Contacto Directo -->
+    <section class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 text-center">
+      <h2 class="text-lg font-bold text-blue-700 mb-2">¿Interesado en mi perfil?</h2>
+      <p class="text-xs text-slate-500 mb-4">Haz clic para entablar comunicación directa por correo electrónico.</p>
+      <a href="mailto:contacto@ejemplo.com?subject=Oportunidad%20Profesional" 
+         class="inline-block w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-md transition transform active:scale-95 text-sm">
+        ✉️ Enviar Mensaje de Contacto
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="py-4 text-center text-xs text-slate-400 border-t border-slate-200 bg-white">
+    © 2026 - UPEC • Carrera de Computación
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
